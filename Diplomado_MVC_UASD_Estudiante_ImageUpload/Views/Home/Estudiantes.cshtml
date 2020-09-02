@@ -1,0 +1,98 @@
+﻿@model Diplomado_MVC_UASD_Estudiante_ImageUpload.Models.tblEstudiante
+
+@{
+    ViewBag.Title = "Estudiantes";
+}
+
+<h2>Estudiantes</h2>
+<head>
+    <style>
+        .linkbtnfull {
+            background-color: #b6ff00;
+            /*#f44336;*/
+            color: white;
+            font-size: medium;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        table {
+            font-family: Arial,sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+
+@using (Html.BeginForm("FileUpload", "Home", FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <table>
+
+        <tbody>
+            <tr>
+                <td style="text-align:center;background-color:cornflowerblue;color:white;font-family:Arial;font-style:oblique;font-size:x-large">
+                    Registro de Estudiantes
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("Nombres","","",new { placeholder = "Digite su Nombre..." })
+                        @Html.ValidationMessage("Nombres", "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                    <td>
+                        @Html.TextBox("Apellidos", "", "", new { placeholder = "Digite sus Apellidos..." })
+                        @Html.ValidationMessage("Apellidos", "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBox("Direccion", "", "", new { placeholder = "Digite su Dirección..." })
+                        @Html.ValidationMessage("Direccion", "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBox("Telefono", "", "", new { placeholder = "Digite su Teléfono..." })
+                        @Html.ValidationMessage("Telefono", "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBox("Cedula", "", "", new { placeholder = "Digite su Cédula..." })
+                        @Html.ValidationMessage("Cedula", "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            <tr>
+                <td>
+                    <input type="file" name="file" id="file" class="btn btn-danger btn-outlined" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" class="btn btn-success" value="Guardar" />
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
