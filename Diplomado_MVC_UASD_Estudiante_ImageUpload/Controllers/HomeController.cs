@@ -18,6 +18,7 @@ namespace Diplomado_MVC_UASD_Estudiante_ImageUpload.Controllers
         public ActionResult FileUpload(tblEstudiante estudiante , HttpPostedFileBase file)
         //public ActionResult FileUpload(HttpPostedFileBase file)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (file != null && ModelState.IsValid)
             {
                 EstudianteDBEntities db = new EstudianteDBEntities();
@@ -34,6 +35,10 @@ namespace Diplomado_MVC_UASD_Estudiante_ImageUpload.Controllers
                 db.tblEstudiantes.Add(estudiante);
                 db.SaveChanges();
                 return RedirectToAction("../home/Detalle/");
+            }
+            if (file == null)
+            {
+                TempData["ErrorFoto"] = "La Foto es Obligatoria";
             }
             return View("Estudiantes");
         }

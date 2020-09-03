@@ -26,7 +26,6 @@ namespace Diplomado_MVC_UASD_Estudiante_ImageUpload.Models
         public string Telefono { get; set; }
         [Required(ErrorMessage = "La Cedula es Obligatoria")]
         [MinLength(11, ErrorMessage = "La Cedula Debe Tener 11 Digitos")]
-        [RegularExpression("$?[0-9]?$", ErrorMessage = "Solo Se Permiten Números")]
         public string Cedula { get; set; }
         public string ImageUrl { get; set; }
     }
